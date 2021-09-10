@@ -7,7 +7,13 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "connect-timeout": "^1.9.0",
     "http-server": "^13.0.1",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-logger": "^3.2.1",
+    "koa-proxies": "^0.12.1",
+    "koa-static": "^5.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -17,7 +23,8 @@
     "start": "react-scripts start",
     "win": "electron ./main.js",
     "build": "react-scripts build",
-    "build-win":"electron-packager . HelloWorld --platform=win32 --arch=x64 --icon=computer.ico --out=./out --asar --app-version=1.0.0 --overwrite --ignore=node_modules ",
+    "build-win": "electron-packager . kok --platform=win32 --arch=x64 --icon=computer.ico --out=./out2 --asar --app-version=1.0.0 --overwrite  ",
+    "build-win32": "electron-builder -w --ia32",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -40,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^14.0.0"
+    "electron": "^14.0.0",
+    "electron-builder": "^22.11.7"
   }
 }

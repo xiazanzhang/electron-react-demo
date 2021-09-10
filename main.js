@@ -1,22 +1,22 @@
 // main.js
 
 // Modules to control application life and create native browser window
-const { app, BrowserWindow ,Menu} = require('electron')
-const { hostname } = require('os')
+const { app, BrowserWindow, Menu } = require('electron')
 const path = require('path')
 const process = require('child_process');
+const { createServer } = require('./koa');
 
-const port = 8080
+const port = 8888
 
-// 开启http服务
-process.exec('http-server ./build');
 
-function createWindow() {
+async function createWindow() {
+    const url = await createServer(port)
+
     Menu.setApplicationMenu(null)
     // Create the browser window.
     const mainWindow = new BrowserWindow({
-        width: 1280,
-        height: 800,
+        width: 1920,
+        height: 1080,
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
@@ -25,7 +25,9 @@ function createWindow() {
     // and load the index.html of the app.
     // mainWindow.loadFile('./build/index.html')
 
-    mainWindow.loadURL(`http://${hostname}:${port}`)
+    mainWindow.loadURL(url)
+
+    // mainWindow.loadURL('https://www.59kok.com/app/home')
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
